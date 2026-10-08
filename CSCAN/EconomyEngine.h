@@ -11,7 +11,7 @@ struct GameData;
 
 enum class BuyDecision {
     FULL_BUY,
-    FORCE_BUY,
+    FORCE_BUY, 
     ECO_ROUND,
     PISTOL_ARMOR,
     ANTI_ECO,
@@ -49,46 +49,46 @@ struct BuyRecommendation {
 class EconomyEngine : public QObject
 {
     Q_OBJECT
-
+    
 public:
-    explicit EconomyEngine(QObject* parent = nullptr);
-
+    explicit EconomyEngine(QObject *parent = nullptr);
+    
     // Main recommendation function
-    BuyRecommendation generateRecommendation(const GameData& gameData);
-
+    BuyRecommendation generateRecommendation(const GameData &gameData);
+    
     // Economy analysis
-    bool shouldForceBuy(int money, int roundsLost, const QString& side);
+    bool shouldForceBuy(int money, int roundsLost, const QString &side);
     bool shouldEco(int money, int teamMoney, int roundsLost);
     bool isAntiEcoRound(int money, int enemyMoney);
-
+    
     // Weapon selection
-    QStringList getBestWeapons(int money, const QString& side, BuyDecision decision);
-    QStringList getBestUtility(int money, const QString& side, BuyDecision decision);
+    QStringList getBestWeapons(int money, const QString &side, BuyDecision decision);
+    QStringList getBestUtility(int money, const QString &side, BuyDecision decision);
     QString getBestArmor(int money, BuyDecision decision);
-
+    
 signals:
-    void recommendationReady(const BuyRecommendation& recommendation);
-
+    void recommendationReady(const BuyRecommendation &recommendation);
+    
 private:
     // Weapon database
     void initializeWeaponDatabase();
     QMap<QString, WeaponInfo> m_weapons;
     QMap<QString, int> m_utilityPrices;
     QMap<QString, int> m_armorPrices;
-
+    
     // Economic calculations
-    int calculateTeamEconomy(const GameData& gameData);
-    int estimateEnemyEconomy(const GameData& gameData);
-    BuyDecision decideBuyStrategy(const GameData& gameData);
-
+    int calculateTeamEconomy(const GameData &gameData);
+    int estimateEnemyEconomy(const GameData &gameData);
+    BuyDecision decideBuyStrategy(const GameData &gameData);
+    
     // Round analysis
     bool isImportantRound(int ctScore, int tScore);
-    int getRoundImportance(int ctScore, int tScore, const QString& side);
-
+    int getRoundImportance(int ctScore, int tScore, const QString &side);
+    
     // Strategy helpers
-    QString generateStrategyText(BuyDecision decision, const QString& side);
-    QString generateReasoningText(const GameData& gameData, BuyDecision decision);
-
+    QString generateStrategyText(BuyDecision decision, const QString &side);
+    QString generateReasoningText(const GameData &gameData, BuyDecision decision);
+    
     // CS2 Economy Constants
     static const int LOSS_BONUS_ROUND_1 = 1400;
     static const int LOSS_BONUS_ROUND_2 = 1900;
@@ -98,7 +98,7 @@ private:
     static const int WIN_BONUS = 3250;
     static const int PLANT_BONUS = 800;
     static const int DEFUSE_BONUS = 250;
-
+    
     // Money thresholds
     static const int FULL_BUY_THRESHOLD = 4000;
     static const int FORCE_BUY_THRESHOLD = 2000;
