@@ -1,0 +1,13 @@
+out/
+build/
+.vs/
+.vscode/
+*.user
+CMakeUserPresets.json
+*.exe
+*.dll
+*.pdb
+*.obj
+.DS_Store
+Thumbs.db
+CSCAN_Debug/
