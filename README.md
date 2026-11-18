@@ -1,4 +1,4 @@
-# <img src="icon.png" width="36" alt=""> CSCAN — CS2 Economy Advisor
+# <img src="icon.png" width="36" alt=""> CSCAN - CS2 Economy Advisor
 
 CSCAN tells you what to buy each round in Counter-Strike 2. It reads your money, side, score and gear through CS2's official Game State Integration and shows a buy recommendation that always fits your budget, with the reason behind it.
 
